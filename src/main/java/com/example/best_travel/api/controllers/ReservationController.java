@@ -62,7 +62,7 @@ public class ReservationController {
             @RequestParam Long hotelId,
             @RequestHeader(required = false) Currency currency) {
         if (Objects.isNull(currency)) currency = Currency.getInstance("USD");
-        return ResponseEntity.ok(Collections.singletonMap("ticketPrice", this.reservationService.findPrice(hotelId)));
+        return ResponseEntity.ok(Collections.singletonMap("ticketPrice", this.reservationService.findPrice(hotelId, currency)));
     }
 
 
