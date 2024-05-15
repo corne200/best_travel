@@ -11,6 +11,7 @@ import com.example.best_travel.infraestructure.abstrac_services.IReservationServ
 import com.example.best_travel.infraestructure.helpers.ApiCurrencyConnectorHelper;
 import com.example.best_travel.infraestructure.helpers.BlackListHelper;
 import com.example.best_travel.infraestructure.helpers.CustomerHelper;
+import com.example.best_travel.infraestructure.helpers.EmailHelper;
 import com.example.best_travel.util.enums.Tables;
 import com.example.best_travel.util.exceptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,7 @@ public class ReservationService implements IReservationService {
     private final CustomerHelper customerHelper;
     private final BlackListHelper blackListHelper;
     private final ApiCurrencyConnectorHelper currencyConnectorHelper;
+    private final EmailHelper emailHelper;
     @Override
     public ReservationResponse create(ReservationRequest request) {
         blackListHelper.isInBlackListCustomer(request.getIdClient());
@@ -57,7 +59,7 @@ public class ReservationService implements IReservationService {
         var reservationPersisted = reservationRepository.save(reservationToPersist);
 
         this.customerHelper.incrase(customer.getDni(), ReservationService.class);
-
+        if(Objects.nonNull(request.getEmail())) this.emailHelper.sendMail(request.getEmail(), customer.getFullName(), Tables.ticket.name());
         return this.entityToResponse(reservationPersisted);
     }
 

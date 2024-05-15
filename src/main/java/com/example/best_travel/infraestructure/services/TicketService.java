@@ -10,6 +10,7 @@ import com.example.best_travel.domain.repositories.TicketRepository;
 import com.example.best_travel.infraestructure.abstrac_services.ITicketService;
 import com.example.best_travel.infraestructure.helpers.BlackListHelper;
 import com.example.best_travel.infraestructure.helpers.CustomerHelper;
+import com.example.best_travel.infraestructure.helpers.EmailHelper;
 import com.example.best_travel.util.enums.Tables;
 import com.example.best_travel.util.exceptions.IdNotFoundException;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Currency;
+import java.util.Objects;
 import java.util.UUID;
 
 @Transactional
@@ -35,6 +37,7 @@ public class TicketService implements ITicketService {
     private final TicketRepository ticketRepository;
     private final CustomerHelper customerHelper;
     private final BlackListHelper blackListHelper;
+    private final EmailHelper emailHelper;
     @Override
     public TicketResponse create(TicketRequest request) {
         blackListHelper.isInBlackListCustomer(request.getIdClient());
@@ -53,7 +56,7 @@ public class TicketService implements ITicketService {
 
         var ticketPersisted = this.ticketRepository.save(ticketToPersist);
         customerHelper.incrase(customer.getDni(), TicketService.class);
-
+        if(Objects.nonNull(request.getEmail())) this.emailHelper.sendMail(request.getEmail(), customer.getFullName(), Tables.ticket.name());
         log.info("Ticket saved with id: {}", ticketPersisted.getId());
         return this.entityToResponse(ticketPersisted);
     }

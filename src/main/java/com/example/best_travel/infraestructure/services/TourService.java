@@ -9,6 +9,7 @@ import com.example.best_travel.domain.repositories.HotelRepository;
 import com.example.best_travel.domain.repositories.TourRepository;
 import com.example.best_travel.infraestructure.abstrac_services.ITourService;
 import com.example.best_travel.infraestructure.helpers.CustomerHelper;
+import com.example.best_travel.infraestructure.helpers.EmailHelper;
 import com.example.best_travel.infraestructure.helpers.TourHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
