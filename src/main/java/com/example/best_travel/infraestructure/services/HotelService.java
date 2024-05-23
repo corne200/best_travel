@@ -3,10 +3,12 @@ package com.example.best_travel.infraestructure.services;
 import com.example.best_travel.api.models.response.HotelResponse;
 import com.example.best_travel.domain.entities.jpa.HotelEntity;
 import com.example.best_travel.domain.repositories.HotelRepository;
+import com.example.best_travel.util.constants.CacheConstants;
 import com.example.best_travel.util.enums.SortType;
 import com.example.best_travel.infraestructure.abstrac_services.IHotelService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -35,7 +37,13 @@ public class HotelService implements IHotelService {
     }
 
     @Override
+    @Cacheable(value = CacheConstants.HOTEL_CACHE_NAME)
     public Set<HotelResponse> readLessPrice(BigDecimal price) {
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return this.hotelRepository.findByPriceLessThan(price)
                 .stream()
                 .map(this::entityToResponse)
