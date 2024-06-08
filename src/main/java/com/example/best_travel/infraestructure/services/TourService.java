@@ -3,13 +3,12 @@ package com.example.best_travel.infraestructure.services;
 import com.example.best_travel.api.models.request.TourRequest;
 import com.example.best_travel.api.models.response.TourResponse;
 import com.example.best_travel.domain.entities.jpa.*;
-import com.example.best_travel.domain.repositories.CustomerRepository;
-import com.example.best_travel.domain.repositories.FlyRepository;
-import com.example.best_travel.domain.repositories.HotelRepository;
-import com.example.best_travel.domain.repositories.TourRepository;
+import com.example.best_travel.domain.repositories.jpa.CustomerRepository;
+import com.example.best_travel.domain.repositories.jpa.FlyRepository;
+import com.example.best_travel.domain.repositories.jpa.HotelRepository;
+import com.example.best_travel.domain.repositories.jpa.TourRepository;
 import com.example.best_travel.infraestructure.abstrac_services.ITourService;
 import com.example.best_travel.infraestructure.helpers.CustomerHelper;
-import com.example.best_travel.infraestructure.helpers.EmailHelper;
 import com.example.best_travel.infraestructure.helpers.TourHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 

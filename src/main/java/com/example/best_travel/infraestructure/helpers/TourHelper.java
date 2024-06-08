@@ -1,8 +1,8 @@
 package com.example.best_travel.infraestructure.helpers;
 
 import com.example.best_travel.domain.entities.jpa.*;
-import com.example.best_travel.domain.repositories.ReservationRepository;
-import com.example.best_travel.domain.repositories.TicketRepository;
+import com.example.best_travel.domain.repositories.jpa.ReservationRepository;
+import com.example.best_travel.domain.repositories.jpa.TicketRepository;
 import com.example.best_travel.infraestructure.services.ReservationService;
 import com.example.best_travel.infraestructure.services.TicketService;
 import com.example.best_travel.util.BestTravelUtil;

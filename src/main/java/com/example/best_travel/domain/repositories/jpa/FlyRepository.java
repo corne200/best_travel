@@ -1,4 +1,4 @@
-package com.example.best_travel.domain.repositories;
+package com.example.best_travel.domain.repositories.jpa;
 
 import com.example.best_travel.domain.entities.jpa.FlyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

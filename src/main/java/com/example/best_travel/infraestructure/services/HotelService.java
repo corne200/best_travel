@@ -2,7 +2,7 @@ package com.example.best_travel.infraestructure.services;
 
 import com.example.best_travel.api.models.response.HotelResponse;
 import com.example.best_travel.domain.entities.jpa.HotelEntity;
-import com.example.best_travel.domain.repositories.HotelRepository;
+import com.example.best_travel.domain.repositories.jpa.HotelRepository;
 import com.example.best_travel.util.constants.CacheConstants;
 import com.example.best_travel.util.enums.SortType;
 import com.example.best_travel.infraestructure.abstrac_services.IHotelService;

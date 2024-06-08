@@ -1,7 +1,7 @@
 package com.example.best_travel.infraestructure.services;
 
 import com.example.best_travel.domain.entities.jpa.CustomerEntity;
-import com.example.best_travel.domain.repositories.CustomerRepository;
+import com.example.best_travel.domain.repositories.jpa.CustomerRepository;
 import com.example.best_travel.infraestructure.abstrac_services.ReportService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

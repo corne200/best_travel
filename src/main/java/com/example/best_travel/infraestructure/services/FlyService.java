@@ -2,7 +2,7 @@ package com.example.best_travel.infraestructure.services;
 
 import com.example.best_travel.api.models.response.FlyResponse;
 import com.example.best_travel.domain.entities.jpa.FlyEntity;
-import com.example.best_travel.domain.repositories.FlyRepository;
+import com.example.best_travel.domain.repositories.jpa.FlyRepository;
 import com.example.best_travel.util.enums.SortType;
 import com.example.best_travel.infraestructure.abstrac_services.IFlyService;
 import lombok.AllArgsConstructor;
