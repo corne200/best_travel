@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import com.example.best_travel.util.enums.SortType;
 
@@ -27,6 +28,8 @@ public class FlyController {
             @RequestParam Integer page,
             @RequestParam Integer size,
             @RequestHeader(required = false) SortType sortType) {
+        var aunthentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(aunthentication.getAuthorities());
         if (Objects.isNull(sortType)) sortType = SortType.NONE;
         var response = this.flyService.realAll(page, size, sortType);
         return response.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(response);

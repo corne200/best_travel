@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -34,6 +35,8 @@ public class TicketController {
     @Operation(summary = "Save in system un ticket with the fly passed in parameter")
     @PostMapping
     public ResponseEntity<TicketResponse> post(@RequestBody TicketRequest request) {
+        var aunthentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(aunthentication.getAuthorities());
         return ResponseEntity.ok(ticketService.create(request));
     }
 
