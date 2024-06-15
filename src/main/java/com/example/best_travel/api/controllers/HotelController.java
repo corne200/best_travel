@@ -1,6 +1,7 @@
 package com.example.best_travel.api.controllers;
 
 import com.example.best_travel.api.models.response.HotelResponse;
+import com.example.best_travel.util.annotations.Notify;
 import com.example.best_travel.util.enums.SortType;
 import com.example.best_travel.infraestructure.abstrac_services.IHotelService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,6 +25,7 @@ public class HotelController {
 
     @Operation(summary = "Return a page with hotels can be sorted or not")
     @GetMapping
+    @Notify(value = "GET hotel")
     public ResponseEntity<Page<HotelResponse>> getAll(
             @RequestParam Integer page,
             @RequestParam Integer size,

@@ -2,6 +2,7 @@ package com.example.best_travel.api.controllers;
 
 import com.example.best_travel.api.models.response.FlyResponse;
 import com.example.best_travel.infraestructure.abstrac_services.IFlyService;
+import com.example.best_travel.util.annotations.Notify;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class FlyController {
     private final IFlyService flyService;
     @Operation(summary = "Return a page with flights can be sorted or not")
     @GetMapping
+    @Notify(value = "GET fly")
     public ResponseEntity<Page<FlyResponse>> getAll(
             @RequestParam Integer page,
             @RequestParam Integer size,
